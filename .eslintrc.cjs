@@ -20,7 +20,7 @@ module.exports = {
       jsx: true
     },
     ecmaVersion: 'latest',
-	  sourceType: module
+    sourceType: "script"
   },
   plugins: ['react-refresh', '@typescript-eslint', 'react-hooks'],
   rules: {
