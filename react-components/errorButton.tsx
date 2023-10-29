@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
-interface ButtonProps {}
+interface ErrorButtonProps {}
 
-interface ButtonState {
+interface ErrorButtonState {
   count: number;
 }
 
-class ButtonError extends Component<ButtonProps, ButtonState> {
-  constructor(props: ButtonProps) {
+class ButtonError extends Component<ErrorButtonProps, ErrorButtonState> {
+  constructor(props: ErrorButtonProps) {
     super(props);
     this.state = {
-      count: 0,
+      count: 1,
     };
   }
 
@@ -25,7 +25,7 @@ class ButtonError extends Component<ButtonProps, ButtonState> {
   checkCount() {
     const { count } = this.state;
     if (count === 2) {
-      throw new Error('I crashed!');
+      throw new Error('The error button has been clicked!');
     }
   }
 
