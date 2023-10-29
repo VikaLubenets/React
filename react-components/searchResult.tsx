@@ -1,28 +1,40 @@
-import React from 'react';
 import { Component } from 'react';
+import { IPlanet } from '../src/types/apiRoot';
+import '../src/styles/searchResult.css';
 
-type SearchResultState = {
-  results: { name: string; description: string }[];
+type SearchResultProps = {
+  results: IPlanet[];
 };
 
-export default class SearchResult extends Component<{}, SearchResultState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      results: [],
-    };
-  }
-
+export default class SearchResult extends Component<SearchResultProps> {
   render() {
+    const { results } = this.props;
     return (
       <div className="search-result__container">
-        {this.state.results.length === 0 ? (
-          <div>No results</div>
+        {results.length === 0 ? (
+          <div className="no-results">No results</div>
         ) : (
-          this.state.results.map((result, index) => (
-            <div key={index}>
-              <div className="result__name">{result.name}</div>
-              <div className="result__description">{result.description}</div>
+          results.map((result, index) => (
+            <div key={index} className="planet-container">
+              <h2 className="planet-name">{`${index + 1}. ${result.name}`}</h2>
+              <div className="planet-description">
+                <div className="planet-info__block">
+                  <h3>Climate: </h3>
+                  <p>{result.climate}</p>
+                </div>
+                <div className="planet-info__block">
+                  <h3>Diameter: </h3>
+                  <p>{result.diameter}</p>
+                </div>
+                <div className="planet-info__block">
+                  <h3>Gravity: </h3>
+                  <p>{result.gravity}</p>
+                </div>
+                <div className="planet-info__block">
+                  <h3>Surface Water: </h3>
+                  <p>{result.surface_water}</p>
+                </div>
+              </div>
             </div>
           ))
         )}

@@ -1,16 +1,21 @@
 import { ChangeEvent, Component } from 'react';
+import { IPlanet } from '../src/types/apiRoot';
+import '../src/styles/search.css';
 
 type SearchState = {
   searchTerm: string;
-  results: string[];
 };
 
-export default class Search extends Component<{}, SearchState> {
-  constructor(props: {}) {
+type SearchProps = {
+  onSearch: (url: string) => Promise<void>;
+  onDataLoaded: (data: IPlanet[]) => void;
+};
+
+export default class Search extends Component<SearchProps, SearchState> {
+  constructor(props: SearchProps) {
     super(props);
     this.state = {
-      searchTerm: localStorage.getItem('searchTerm') || '',
-      results: [],
+      searchTerm: localStorage.getItem('searchTermSaved') || '',
     };
   }
 
@@ -18,23 +23,17 @@ export default class Search extends Component<{}, SearchState> {
     this.setState({ searchTerm: event.target.value });
   };
 
-  handleSearch = async () => {
+  handleSearch = () => {
     const term = this.state.searchTerm.trim();
     let url;
     if (term) {
       url = `https://swapi.dev/api/planets/?search=${term}`;
+      localStorage.setItem('searchTermSaved', term);
     } else {
-      url = `https://swapi.dev/api/planets/?page=1`;
+      url = 'https://swapi.dev/api/planets/';
     }
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      this.setState({ results: data });
-      console.log(data);
-    } catch (error) {
-      console.error('Error fetching data: ', error);
-    }
-    localStorage.setItem('searchTerm', term);
+
+    this.props.onSearch(url);
   };
 
   render() {
@@ -45,7 +44,9 @@ export default class Search extends Component<{}, SearchState> {
           value={this.state.searchTerm}
           onChange={this.handleInputChange}
         />
-        <button onClick={this.handleSearch}>Search</button>
+        <button className="search-button" onClick={this.handleSearch}>
+          Search
+        </button>
       </div>
     );
   }
