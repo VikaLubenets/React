@@ -1,7 +1,8 @@
-import { Component, ReactNode } from 'react';
-import Modal from './modal';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { Component, ReactNode } from 'react';
 
 interface ErrorBoundaryProps {
+  fallback: ReactNode;
   children: ReactNode;
 }
 
@@ -19,31 +20,21 @@ export default class ErrorBoundary extends Component<
   }
 
   static getDerivedStateFromError(error: Error) {
-    if (error) {
-      return { hasError: true };
-    }
+    console.log('here get Derived');
+    return { hasError: true };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('Error occurred: ', error);
-    console.error('Error Info: ', errorInfo.componentStack);
-    logErrorToMyService(error, errorInfo.componentStack);
+    console.log('Error occurred: ', error);
+    console.log('Error Info: ', errorInfo.componentStack);
+    this.setState({ hasError: true });
   }
 
   render() {
     if (this.state.hasError) {
-      return (
-        <Modal>
-          <div>Something went wrong. Please try again later.</div>
-        </Modal>
-      );
+      return this.props.fallback;
     }
 
     return this.props.children;
   }
-}
-
-function logErrorToMyService(error: Error, componentStack: string) {
-  console.error('Error occurred: ', error);
-  console.error('Component Stack: ', componentStack);
 }

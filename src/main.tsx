@@ -5,7 +5,7 @@ import ErrorBoundary from '../react-components/errorBoundary';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ErrorBoundary>
+    <ErrorBoundary fallback="Error has been occured. Try again later">
       <App />
     </ErrorBoundary>
   </React.StrictMode>

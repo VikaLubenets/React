@@ -10,7 +10,7 @@ export default class SearchResult extends Component<SearchResultProps> {
   render() {
     const { results } = this.props;
     return (
-      <div className="search-result__container">
+      <main className="search-result__container">
         {results.length === 0 ? (
           <div className="no-results">No results</div>
         ) : (
@@ -38,7 +38,7 @@ export default class SearchResult extends Component<SearchResultProps> {
             </div>
           ))
         )}
-      </div>
+      </main>
     );
   }
 }

@@ -7,36 +7,25 @@ import './styles/app.css';
 interface AppProps {}
 
 interface AppState {
-  initialResults: IPlanet[];
   searchResults: IPlanet[];
   isLoaded: boolean;
-  isFirst: boolean;
 }
 
 export default class App extends Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.state = {
-      initialResults: [],
       searchResults: [],
       isLoaded: false,
-      isFirst: true,
     };
   }
 
   handleSearch = async (url: string) => {
     try {
+      this.setState({ isLoaded: false });
       const response = await fetch(url);
       const data: SwapiData = await response.json();
-      if (this.state.isFirst) {
-        this.setState({
-          initialResults: data.results,
-          isLoaded: true,
-          isFirst: false,
-        });
-      } else {
-        this.setState({ searchResults: data.results, isLoaded: true });
-      }
+      this.setState({ searchResults: data.results, isLoaded: true });
     } catch (error) {
       console.error('Error fetching data: ', error);
       this.setState({ isLoaded: true });
@@ -59,7 +48,7 @@ export default class App extends Component<AppProps, AppState> {
   }
 
   render = () => {
-    const { initialResults, searchResults, isLoaded, isFirst } = this.state;
+    const { searchResults, isLoaded } = this.state;
 
     return (
       <div className="container">
@@ -68,7 +57,7 @@ export default class App extends Component<AppProps, AppState> {
           onDataLoaded={this.handleDataLoaded}
         />
         {isLoaded ? (
-          <SearchResult results={isFirst ? initialResults : searchResults} />
+          <SearchResult results={searchResults} />
         ) : (
           <div className="loader">Loading...</div>
         )}
