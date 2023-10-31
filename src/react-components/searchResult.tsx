@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { IPlanet } from '../src/types/apiRoot';
-import '../src/styles/searchResult.css';
+import { IPlanet } from '../types/apiRoot';
+import '../styles/searchResult.css';
 
 type SearchResultProps = {
   results: IPlanet[];
@@ -11,7 +11,7 @@ export default class SearchResult extends Component<SearchResultProps> {
     const { results } = this.props;
     return (
       <main className="search-result__container">
-        {results.length === 0 ? (
+        {!results.length ? (
           <div className="no-results">No results</div>
         ) : (
           results.map((result, index) => (

@@ -1,5 +1,5 @@
-import Search from '../react-components/search';
-import SearchResult from '../react-components/searchResult';
+import Search from './react-components/search';
+import SearchResult from './react-components/searchResult';
 import { Component } from 'react';
 import { IPlanet, SwapiData } from './types/apiRoot';
 import './styles/app.css';

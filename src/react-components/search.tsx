@@ -1,7 +1,7 @@
 import { ChangeEvent, Component } from 'react';
-import { IPlanet } from '../src/types/apiRoot';
+import { IPlanet } from '../types/apiRoot';
 import ButtonError from './errorButton';
-import '../src/styles/search.css';
+import '../styles/search.css';
 
 type SearchState = {
   searchTerm: string;
