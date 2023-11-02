@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { Component, ReactNode } from 'react';
 
 interface ErrorBoundaryProps {

@@ -8,7 +8,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ErrorBoundary
       fallback={
         <div className="error-message">
-          Error has been occured. Try again later
+          Error has been occured. Try again later or reload the page
         </div>
       }
     >

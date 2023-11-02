@@ -1,47 +1,23 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 
-interface ErrorButtonProps {}
+function ButtonError() {
+  const [count, setCount] = useState(1);
 
-interface ErrorButtonState {
-  count: number;
-}
-
-class ButtonError extends Component<ErrorButtonProps, ErrorButtonState> {
-  constructor(props: ErrorButtonProps) {
-    super(props);
-    this.state = {
-      count: 1,
-    };
-  }
-
-  componentDidMount() {
-    this.checkCount();
-  }
-
-  componentDidUpdate() {
-    this.checkCount();
-  }
-
-  checkCount() {
-    const { count } = this.state;
+  useEffect(() => {
     if (count === 2) {
       throw new Error('The error button has been clicked!');
     }
-  }
+  }, [count]);
 
-  handleClick = () => {
-    this.setState((prevState) => ({
-      count: prevState.count + 1,
-    }));
+  const handleClick = () => {
+    setCount(count + 1);
   };
 
-  render() {
-    return (
-      <button className="error-button" onClick={this.handleClick}>
-        Throw Error
-      </button>
-    );
-  }
+  return (
+    <button className="error-button" onClick={handleClick}>
+      Throw Error
+    </button>
+  );
 }
 
 export default ButtonError;
