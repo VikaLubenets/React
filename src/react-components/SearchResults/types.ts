@@ -1,6 +1,6 @@
-import { IPlanet } from '../../utils/GeneralTypes';
+import { IProduct } from '../../utils/GeneralTypes';
 
 export type SearchResultProps = {
-  results: IPlanet[];
+  results: IProduct[];
   currentPage: number;
 };

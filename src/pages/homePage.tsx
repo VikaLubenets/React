@@ -4,25 +4,33 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Pagination from '../react-components/Pagination/Pagination';
 import Search from '../react-components/Header/Header';
 import SearchResult from '../react-components/SearchResults/SearchResults';
-import { IPlanet, SwapiData } from '../utils/GeneralTypes';
+import {
+  IPlanet,
+  IProduct,
+  IProductList,
+  SwapiData,
+} from '../utils/GeneralTypes';
+import Loader from '../react-components/Loader/Loader';
+import { BASE_URL } from '../utils/Constants';
+import SearchResults from '../react-components/SearchResults/SearchResults';
 
 export default function HomePage() {
-  const [searchResults, setSearchResults] = useState<IPlanet[]>([]);
+  const [searchResults, setSearchResults] = useState<IProduct[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [totalCount, setTotalCount] = useState(60);
   const [currentPage, setCurrentPage] = useState(1);
+  const [limitPerPage, setLimitPerPage] = useState(10);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const navigate = useNavigate();
-  const itemsPerPage = 10;
 
   const handleSearch = async (url: string) => {
     try {
       setIsLoaded(false);
       const response = await fetch(url);
-      const data: SwapiData = await response.json();
-      setTotalCount(data.count);
-      setSearchResults(data.results);
+      const data: IProductList = await response.json();
+      setTotalCount(data.total);
+      setSearchResults(data.products);
       setIsLoaded(true);
     } catch (error) {
       console.error('Error fetching data: ', error);
@@ -33,11 +41,11 @@ export default function HomePage() {
   const getPage = (page: number = 1, search?: string) => {
     let url;
     if (search) {
-      url = `https://swapi.dev/api/planets/?page=${page}&search=${search}`;
+      url = `${BASE_URL}/search?q=${search}`;
       searchParams.set('page', String(page));
       searchParams.set('search', search);
     } else {
-      url = `https://swapi.dev/api/planets/?page=${page}`;
+      url = BASE_URL;
       searchParams.set('page', String(page));
       searchParams.delete('search');
     }
@@ -45,7 +53,7 @@ export default function HomePage() {
     handleSearch(url);
   };
 
-  const handleDataLoaded = (data: IPlanet[]) => {
+  const handleDataLoaded = (data: IProduct[]) => {
     setSearchResults(data);
     setIsLoaded(true);
   };
@@ -57,42 +65,27 @@ export default function HomePage() {
     } else {
       getPage(1);
     }
-  }, []);
-
-  const onPageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-    const searchTermSaved = localStorage.getItem('searchTermSaved');
-    if (searchTermSaved) {
-      getPage(pageNumber, searchTermSaved);
-    } else {
-      getPage(pageNumber);
-    }
-  };
-
-  const onSelectedItemsChange = (num: number) => {
-    // const arr = [];
-    // const requestsNum =
-  };
+  }, [currentPage, limitPerPage]);
 
   return (
     <React.Fragment>
       <Search
         onSearch={handleSearch}
         onDataLoaded={handleDataLoaded}
-        onItemsChange={onSelectedItemsChange}
+        onItemsChange={setLimitPerPage}
       />
       {isLoaded ? (
         <React.Fragment>
-          <SearchResult results={searchResults} currentPage={currentPage} />
+          <SearchResults results={searchResults} currentPage={currentPage} />
           <Pagination
             currentPage={currentPage}
-            totalPages={Math.ceil(totalCount / itemsPerPage)}
-            onPageChange={onPageChange}
+            totalPages={Math.ceil(totalCount / limitPerPage)}
+            onPageChange={setCurrentPage}
           />
           <Outlet />
         </React.Fragment>
       ) : (
-        <div className="loader">Loading...</div>
+        <Loader />
       )}
     </React.Fragment>
   );

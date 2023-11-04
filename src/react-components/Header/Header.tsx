@@ -1,10 +1,11 @@
 import { ChangeEvent } from 'react';
-import { IPlanet } from '../../utils/GeneralTypes';
-import ButtonError from '../ErrorButton/errorButton';
+import { IProduct } from '../../utils/GeneralTypes';
+import ButtonError from '../ErrorButton/ErrorButton';
 import { useState } from 'react';
 import SelectElements from '../SelectElement/SelectElement';
 import './header.css';
 import { SearchProps } from './types';
+import { BASE_URL } from '../../utils/Constants';
 
 export default function Header({
   onSearch,
@@ -23,10 +24,10 @@ export default function Header({
     const term = searchTerm.trim();
     let url;
     if (term) {
-      url = `https://swapi.dev/api/planets/?search=${term}`;
+      url = `${BASE_URL}/search?q=${term}`;
       localStorage.setItem('searchTermSaved', term);
     } else {
-      url = 'https://swapi.dev/api/planets/';
+      url = BASE_URL;
     }
 
     onSearch(url);

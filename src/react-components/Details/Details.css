@@ -10,7 +10,7 @@
     height: 50px;
     border-radius: 100px;
     background-color: pink;
-    background-image: url('../assets/close.png');
+    background-image: url('../../assets/close.png');
     background-repeat: no-repeat;
     background-size:30px 30px;
     background-position: center;

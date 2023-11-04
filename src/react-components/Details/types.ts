@@ -1,6 +1,6 @@
-import { IPlanet } from '../../utils/GeneralTypes';
+import { IProduct } from '../../utils/GeneralTypes';
 
 export interface IDetailsProp {
-  info: IPlanet;
+  info: IProduct;
   onClose: () => void;
 }

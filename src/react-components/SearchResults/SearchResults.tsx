@@ -1,13 +1,14 @@
-import { IPlanet } from '../../utils/GeneralTypes';
+import { IProduct, Product } from '../../utils/GeneralTypes';
 import { MouseEventHandler, useState } from 'react';
-import Details from '../Details/details';
+import Details from '../Details/Details';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchResultProps } from './types';
 import './SearchResults.css';
+import { BASE_URL } from '../../utils/Constants';
 
 export default function SearchResults(props: SearchResultProps) {
   const { results, currentPage } = props;
-  const [selectedPlanet, setSelectedPlanet] = useState<IPlanet | null>(null);
+  const [selectedPlanet, setSelectedPlanet] = useState<IProduct | null>(null);
   const [isPlanetLoading, setIsPlanetLoading] = useState(false);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -16,16 +17,14 @@ export default function SearchResults(props: SearchResultProps) {
   const openDetails = async (index: number) => {
     try {
       setIsPlanetLoading(true);
-
-      const url = results[index].url;
-      const ItemId = url.match(/\/(\d+)\/?$/)?.[1] as string;
+      const url = `${BASE_URL}/${results[index].id}`;
 
       const response = await fetch(url);
-      const planet: IPlanet = await response.json();
+      const planet: IProduct = await response.json();
 
       setSelectedPlanet(planet);
       setIsPlanetLoading(false);
-      searchParams.set('details', ItemId);
+      searchParams.set('details', String(results[index].id));
       navigate('?' + searchParams.toString());
     } catch (error) {
       setIsPlanetLoading(false);
@@ -42,9 +41,8 @@ export default function SearchResults(props: SearchResultProps) {
   const handleCloseClick: MouseEventHandler<HTMLDivElement> = (e) => {
     const target = e.target as HTMLElement;
     if (
-      target &&
-      target.classList.contains('search-results') &&
-      !target.classList.contains('planet-container')
+      target?.classList.contains('search-results') &&
+      !target?.classList.contains('planet-container')
     ) {
       closeDetails();
     }
@@ -67,23 +65,19 @@ export default function SearchResults(props: SearchResultProps) {
               className="planet-container"
               onClick={() => openDetails(index)}
             >
-              <h2 className="planet-name">{`${index + 1}. ${result.name}`}</h2>
+              <h2 className="planet-name">{`${index + 1}. ${result.title}`}</h2>
               <div className="planet-description">
                 <div className="planet-info__block">
-                  <h3>Climate: </h3>
-                  <p>{result.climate}</p>
+                  <h3>{Product.BRAND}</h3>
+                  <p>{result.brand}</p>
                 </div>
                 <div className="planet-info__block">
-                  <h3>Diameter: </h3>
-                  <p>{result.diameter}</p>
+                  <h3>{Product.DESCRIPTION}</h3>
+                  <p>{result.description}</p>
                 </div>
                 <div className="planet-info__block">
-                  <h3>Gravity: </h3>
-                  <p>{result.gravity}</p>
-                </div>
-                <div className="planet-info__block">
-                  <h3>Surface Water: </h3>
-                  <p>{result.surface_water}</p>
+                  <h3>{Product.PRICE}</h3>
+                  <p>{result.price} $</p>
                 </div>
               </div>
             </div>
