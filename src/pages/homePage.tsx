@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import Pagination from '../react-components/pagination';
-import Search from '../react-components/search';
-import SearchResult from '../react-components/searchResult';
-import { IPlanet, SwapiData } from '../types/apiRoot';
+import Pagination from '../react-components/Pagination/Pagination';
+import Search from '../react-components/Header/Header';
+import SearchResult from '../react-components/SearchResults/SearchResults';
+import { IPlanet, SwapiData } from '../utils/GeneralTypes';
 
-export default function Home() {
+export default function HomePage() {
   const [searchResults, setSearchResults] = useState<IPlanet[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [totalCount, setTotalCount] = useState(60);

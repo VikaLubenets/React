@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import './ErrorButton.css';
 
-export default function ButtonError() {
+export default function ErrorButton() {
   const [count, setCount] = useState(1);
 
   useEffect(() => {

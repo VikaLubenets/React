@@ -1,11 +1,5 @@
-import { FunctionComponent } from 'react';
-import '../styles/pagination.css';
-
-type PaginationProps = {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-};
+import './pagination.css';
+import { PaginationProps } from './types';
 
 export default function Pagination({
   currentPage,

@@ -1,10 +1,6 @@
-import { IPlanet } from '../types/apiRoot';
-import '../styles/details.css';
-
-interface IDetailsProp {
-  info: IPlanet;
-  onClose: () => void;
-}
+import { IPlanet } from '../../utils/GeneralTypes';
+import { IDetailsProp } from './types';
+import './details.css';
 
 export default function Details({ info, onClose }: IDetailsProp) {
   return (

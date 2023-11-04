@@ -1,17 +1,12 @@
 import { ChangeEvent } from 'react';
-import { IPlanet } from '../types/apiRoot';
-import ButtonError from './errorButton';
-import '../styles/search.css';
+import { IPlanet } from '../../utils/GeneralTypes';
+import ButtonError from '../ErrorButton/errorButton';
 import { useState } from 'react';
-import SelectElements from './selectElements';
+import SelectElements from '../SelectElement/SelectElement';
+import './header.css';
+import { SearchProps } from './types';
 
-type SearchProps = {
-  onSearch: (url: string) => Promise<void>;
-  onDataLoaded: (data: IPlanet[]) => void;
-  onItemsChange: (num: number) => void;
-};
-
-export default function Search({
+export default function Header({
   onSearch,
   onDataLoaded,
   onItemsChange,

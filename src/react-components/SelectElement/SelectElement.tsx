@@ -1,11 +1,8 @@
 import { ChangeEvent, useState } from 'react';
-import '../styles/selectElements.css';
+import { ISelectElements } from './types';
+import './SelectElement.css';
 
-interface ISelectElements {
-  onItemsChange: (num: number) => void;
-}
-
-export default function SelectElements(props: ISelectElements) {
+export default function SelectElement(props: ISelectElements) {
   const [options] = useState([10, 20, 30]);
 
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {

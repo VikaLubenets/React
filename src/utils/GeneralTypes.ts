@@ -1,3 +1,7 @@
+export enum Item {
+  Climate = 'default',
+}
+
 export interface IPlanet {
   climate: string;
   created: string;

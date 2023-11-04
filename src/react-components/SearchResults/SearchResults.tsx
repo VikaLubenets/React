@@ -1,15 +1,11 @@
-import { IPlanet } from '../types/apiRoot';
+import { IPlanet } from '../../utils/GeneralTypes';
 import { MouseEventHandler, useState } from 'react';
-import Details from './details';
+import Details from '../Details/details';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../styles/searchResult.css';
+import { SearchResultProps } from './types';
+import './SearchResults.css';
 
-type SearchResultProps = {
-  results: IPlanet[];
-  currentPage: number;
-};
-
-export default function SearchResult(props: SearchResultProps) {
+export default function SearchResults(props: SearchResultProps) {
   const { results, currentPage } = props;
   const [selectedPlanet, setSelectedPlanet] = useState<IPlanet | null>(null);
   const [isPlanetLoading, setIsPlanetLoading] = useState(false);
@@ -20,10 +16,13 @@ export default function SearchResult(props: SearchResultProps) {
   const openDetails = async (index: number) => {
     try {
       setIsPlanetLoading(true);
+
       const url = results[index].url;
       const ItemId = url.match(/\/(\d+)\/?$/)?.[1] as string;
+
       const response = await fetch(url);
       const planet: IPlanet = await response.json();
+
       setSelectedPlanet(planet);
       setIsPlanetLoading(false);
       searchParams.set('details', ItemId);
