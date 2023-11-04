@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Pagination from '../react-components/pagination';
@@ -56,7 +57,6 @@ export default function Home() {
     } else {
       getPage(1);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onPageChange = (pageNumber: number) => {
@@ -69,9 +69,18 @@ export default function Home() {
     }
   };
 
+  const onSelectedItemsChange = (num: number) => {
+    // const arr = [];
+    // const requestsNum =
+  };
+
   return (
     <React.Fragment>
-      <Search onSearch={handleSearch} onDataLoaded={handleDataLoaded} />
+      <Search
+        onSearch={handleSearch}
+        onDataLoaded={handleDataLoaded}
+        onItemsChange={onSelectedItemsChange}
+      />
       {isLoaded ? (
         <React.Fragment>
           <SearchResult results={searchResults} currentPage={currentPage} />

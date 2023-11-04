@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function ButtonError() {
+export default function ButtonError() {
   const [count, setCount] = useState(1);
 
   useEffect(() => {
@@ -19,5 +19,3 @@ function ButtonError() {
     </button>
   );
 }
-
-export default ButtonError;

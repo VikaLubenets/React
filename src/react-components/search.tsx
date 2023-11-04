@@ -3,13 +3,19 @@ import { IPlanet } from '../types/apiRoot';
 import ButtonError from './errorButton';
 import '../styles/search.css';
 import { useState } from 'react';
+import SelectElements from './selectElements';
 
 type SearchProps = {
   onSearch: (url: string) => Promise<void>;
   onDataLoaded: (data: IPlanet[]) => void;
+  onItemsChange: (num: number) => void;
 };
 
-export default function Search({ onSearch, onDataLoaded }: SearchProps) {
+export default function Search({
+  onSearch,
+  onDataLoaded,
+  onItemsChange,
+}: SearchProps) {
   const [searchTerm, setSearchTerm] = useState(
     localStorage.getItem('searchTermSaved') || ''
   );
@@ -39,6 +45,7 @@ export default function Search({ onSearch, onDataLoaded }: SearchProps) {
       </button>
 
       <ButtonError />
+      <SelectElements onItemsChange={onItemsChange} />
     </div>
   );
 }
