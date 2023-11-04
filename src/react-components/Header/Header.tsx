@@ -7,11 +7,7 @@ import './header.css';
 import { SearchProps } from './types';
 import { BASE_URL } from '../../utils/Constants';
 
-export default function Header({
-  onSearch,
-  onDataLoaded,
-  onItemsChange,
-}: SearchProps) {
+export default function Header({ onSearch, onItemsChange }: SearchProps) {
   const [searchTerm, setSearchTerm] = useState(
     localStorage.getItem('searchTermSaved') || ''
   );

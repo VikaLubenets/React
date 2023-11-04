@@ -67,18 +67,8 @@ export default function SearchResults(props: SearchResultProps) {
             >
               <h2 className="planet-name">{`${index + 1}. ${result.title}`}</h2>
               <div className="planet-description">
-                <div className="planet-info__block">
-                  <h3>{Product.BRAND}</h3>
-                  <p>{result.brand}</p>
-                </div>
-                <div className="planet-info__block">
-                  <h3>{Product.DESCRIPTION}</h3>
-                  <p>{result.description}</p>
-                </div>
-                <div className="planet-info__block">
-                  <h3>{Product.PRICE}</h3>
-                  <p>{result.price} $</p>
-                </div>
+                <h3>{Product.DESCRIPTION}</h3>
+                <p>{result.description}</p>
               </div>
             </div>
           ))}
@@ -89,7 +79,7 @@ export default function SearchResults(props: SearchResultProps) {
       ) : (
         selectedPlanet && (
           <div className="details-section">
-            <Details info={selectedPlanet} onClose={closeDetails} />
+            <Details id={1} onClose={closeDetails} />
           </div>
         )
       )}

@@ -1,6 +1,6 @@
 import { IProduct } from '../../utils/GeneralTypes';
 
 export interface IDetailsProp {
-  info: IProduct;
+  id: number;
   onClose: () => void;
 }
