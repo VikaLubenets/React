@@ -1,7 +1,3 @@
-export enum Item {
-  Climate = 'default',
-}
-
 export interface IProduct {
   id: number;
   title: string;
