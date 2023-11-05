@@ -3,7 +3,7 @@ import { SearchProps } from './types';
 import { BASE_URL } from '../../utils/Constants';
 import ErrorButton from '../ErrorButton/ErrorButton';
 import SelectElement from '../SelectElement/SelectElement';
-import './header.css';
+import './Header.css';
 
 export default function Header({
   getPage,
