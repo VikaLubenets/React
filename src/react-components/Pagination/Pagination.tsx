@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { PaginationProps } from './types';
-import './pagination.css';
+import './Pagination.css';
 
 export default function Pagination({
   currentPage,
