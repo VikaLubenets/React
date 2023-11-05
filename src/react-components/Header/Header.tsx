@@ -1,6 +1,5 @@
 import { ChangeEvent, useState } from 'react';
 import { SearchProps } from './types';
-import { BASE_URL } from '../../utils/Constants';
 import ErrorButton from '../ErrorButton/ErrorButton';
 import SelectElement from '../SelectElement/SelectElement';
 import './Header.css';
@@ -24,6 +23,7 @@ export default function Header({
       localStorage.setItem('searchTermSaved', term);
       getPage(1, limitPerPage, term);
     } else {
+      localStorage.removeItem('searchTermSaved');
       getPage(1, limitPerPage);
     }
   };

@@ -1,30 +1,23 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { IProduct, Product } from '../../utils/GeneralTypes';
-import { BASE_URL } from '../../utils/Constants';
+import { getProductData } from '../../utils/GlobalFunctions';
 import './Details.css';
 
 export default function Details() {
   const [productData, setProductData] = useState<IProduct | null>(null);
   const [isProductLoading, setIsProductLoading] = useState(false);
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
 
-  const getProductData = async (itemId: number) => {
-    try {
-      setIsProductLoading(true);
-      const url = `${BASE_URL}/${itemId}`;
-      const productDataResponse = await fetch(url);
-      const data = await productDataResponse.json();
-      setProductData(data);
-      setIsProductLoading(false);
-    } catch (error) {
-      console.log('Error with fetching data for product details: ', error);
-    }
+  const startLoading = async (id: number) => {
+    setIsProductLoading(true);
+    const data = await getProductData(id);
+    setProductData(data);
+    setIsProductLoading(false);
   };
 
   useEffect(() => {
-    getProductData(Number(id));
+    startLoading(Number(id));
   }, [id]);
 
   return (
@@ -33,10 +26,7 @@ export default function Details() {
         <div>Loading...</div>
       ) : (
         <>
-          <div
-            className="details__close-btn"
-            onClick={() => navigate('/')}
-          ></div>
+          <Link to={`/`} key={id} className="details__close-btn" />
           <div className="details-container">
             {productData && (
               <>
@@ -44,23 +34,23 @@ export default function Details() {
                   Details of product "{productData.title}"
                 </h2>
                 <p className="details-item">
-                  {Product.BRAND} {productData.brand}
+                  {Product.BRAND}: {productData.brand}
                 </p>
                 <p className="details-item">
-                  {Product.DESCRIPTION} {productData.description}
+                  {Product.DESCRIPTION}: {productData.description}
                 </p>
                 <p className="details-item">
-                  {Product.PRICE} {productData.price} $
+                  {Product.PRICE}: {productData.price} $
                 </p>
                 <p className="details-item">
-                  {Product.DISCOUNT_PERCENTAGE} {productData.discountPercentage}{' '}
-                  %
+                  {Product.DISCOUNT_PERCENTAGE}:{' '}
+                  {productData.discountPercentage} %
                 </p>
                 <p className="details-item">
-                  {Product.RATING} {productData.rating}
+                  {Product.RATING}: {productData.rating}
                 </p>
                 <p className="details-item">
-                  {Product.STOCK} {productData.stock}
+                  {Product.STOCK}: {productData.stock}
                 </p>
               </>
             )}

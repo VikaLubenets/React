@@ -37,9 +37,9 @@ export default function SearchResults(props: SearchResultProps) {
       {!results.length ? (
         <div className="no-results">No results</div>
       ) : (
-        <div
+        <Link
+          to={`/`}
           className={`search-results ${isDetailsOpen ? 'with-details' : ''}`}
-          onClick={handleCloseDetailsClick}
         >
           {results.map((result, index) => (
             <Link
@@ -51,12 +51,12 @@ export default function SearchResults(props: SearchResultProps) {
                 result.title
               }`}</h2>
               <div className="product-description">
-                <h3>{Product.DESCRIPTION}</h3>
+                <h3>{Product.DESCRIPTION}:</h3>
                 <p>{result.description}</p>
               </div>
             </Link>
           ))}
-        </div>
+        </Link>
       )}
     </React.Fragment>
   );
