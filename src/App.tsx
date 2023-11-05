@@ -1,16 +1,15 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/HomePage';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import Details from './react-components/Details/Details';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />}>
-            {/* <Route path="/" element={(props) => <Details {...props} />} /> */}
-          </Route>
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />}>
+          <Route path="details/:id" element={<Details />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -1,92 +1,77 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.loader{
-    font-size: 34px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(174, 174, 237);
-    height: 85vh;
+.loader {
+  font-size: 34px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(174, 174, 237);
+  height: 85vh;
 }
 
-.no-results{
-    font-size: 34px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.no-results {
+  font-size: 34px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.search-result__container{
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    padding: 2vh 10px;
-    background-color: rgb(174, 174, 237);
-    overflow-x: hidden;
+.search-result__container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 2vh 10px;
+  background-color: rgb(174, 174, 237);
+  overflow-x: hidden;
 }
 
 .search-results {
-    width: 95vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-
-}
-
-.details-section,
-.details-section__loader {
-    width: 30vw;
-    padding: 10px;
-    position: relative;
-    background-color: white;
-    border-radius: 15px;
-}
-
-.details-section__loader {
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .search-results.with-details {
-    width: 70vw;
+  width: 70vw;
 }
 
-.planet-container{
-    display: flex;
-    gap: 20px;
-    padding: 10px;
-    border: 1px solid black;
-    width: 95%;
+.product-container {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 95%;
+  text-decoration: none;
+  color: black;
 }
 
-.planet-container:hover{
-    cursor: pointer;
+.product-container:visited {
+  text-decoration: none;
+  color: black;
 }
 
-.planet-name{
-    font-size: 24px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 20vw;
+.product-container:hover {
+  cursor: pointer;
 }
 
-.planet-info__block{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.product-name {
+  font-size: 24px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 20vw;
 }
 
-.planet-description{
-    width: 78vw;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+.product-description {
+  width: 78vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }

@@ -1,13 +1,15 @@
-import { ChangeEvent } from 'react';
-import { IProduct } from '../../utils/GeneralTypes';
-import ButtonError from '../ErrorButton/ErrorButton';
-import { useState } from 'react';
-import SelectElements from '../SelectElement/SelectElement';
-import './header.css';
+import { ChangeEvent, useState } from 'react';
 import { SearchProps } from './types';
 import { BASE_URL } from '../../utils/Constants';
+import ErrorButton from '../ErrorButton/ErrorButton';
+import SelectElement from '../SelectElement/SelectElement';
+import './header.css';
 
-export default function Header({ onSearch, onItemsChange }: SearchProps) {
+export default function Header({
+  getPage,
+  onItemsChange,
+  limitPerPage,
+}: SearchProps) {
   const [searchTerm, setSearchTerm] = useState(
     localStorage.getItem('searchTermSaved') || ''
   );
@@ -18,15 +20,12 @@ export default function Header({ onSearch, onItemsChange }: SearchProps) {
 
   const handleSearch = () => {
     const term = searchTerm.trim();
-    let url;
     if (term) {
-      url = `${BASE_URL}/search?q=${term}`;
       localStorage.setItem('searchTermSaved', term);
+      getPage(1, limitPerPage, term);
     } else {
-      url = BASE_URL;
+      getPage(1, limitPerPage);
     }
-
-    onSearch(url);
   };
 
   return (
@@ -36,8 +35,8 @@ export default function Header({ onSearch, onItemsChange }: SearchProps) {
         Search
       </button>
 
-      <ButtonError />
-      <SelectElements onItemsChange={onItemsChange} />
+      <ErrorButton />
+      <SelectElement onItemsChange={onItemsChange} />
     </div>
   );
 }

@@ -1,25 +1,26 @@
-import './pagination.css';
+import { useEffect, useState } from 'react';
 import { PaginationProps } from './types';
+import './pagination.css';
 
 export default function Pagination({
   currentPage,
   totalPages,
   onPageChange,
 }: PaginationProps) {
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
+  const [pageNumbers, setPageNumbers] = useState<number[]>([]);
+
+  useEffect(() => {
+    const numbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+    setPageNumbers(numbers);
+  }, [totalPages]);
 
   return (
     <div className="pagination">
       {pageNumbers.map((number) => (
         <div
-          className={
-            currentPage === number
-              ? 'pagination-item current'
-              : 'pagination-item'
-          }
+          className={`pagination-item ${
+            currentPage === number ? ' current' : ''
+          }`}
           key={number}
           onClick={() => onPageChange(number)}
         >

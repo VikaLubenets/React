@@ -1,6 +1,7 @@
 import { IProduct } from '../../utils/GeneralTypes';
 
-export type SearchProps = {
-  onSearch: (url: string) => Promise<void>;
+export interface SearchProps {
+  getPage: (page: number, limit: number, search?: string) => void;
   onItemsChange: (num: number) => void;
-};
+  limitPerPage: number;
+}

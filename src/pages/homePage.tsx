@@ -1,17 +1,17 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import Pagination from '../react-components/Pagination/Pagination';
-import Search from '../react-components/Header/Header';
-import SearchResults from '../react-components/SearchResults/SearchResults';
+import React, { Dispatch, useEffect, useState } from 'react';
+import { Outlet, useNavigate, useSearchParams } from 'react-router-dom';
 import { IProduct, IProductList } from '../utils/GeneralTypes';
-import Loader from '../react-components/Loader/Loader';
 import { BASE_URL } from '../utils/Constants';
+import { SearchProps } from '../react-components/Header/types';
+import Pagination from '../react-components/Pagination/Pagination';
+import SearchResults from '../react-components/SearchResults/SearchResults';
+import Loader from '../react-components/Loader/Loader';
+import Header from '../react-components/Header/Header';
 
 export default function HomePage() {
   const [searchResults, setSearchResults] = useState<IProduct[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [totalCount, setTotalCount] = useState(60);
+  const [totalCount, setTotalCount] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [limitPerPage, setLimitPerPage] = useState(10);
   const [searchParams] = useSearchParams();
@@ -34,41 +34,66 @@ export default function HomePage() {
   const getPage = (page: number = 1, limit: number, search?: string) => {
     let url = BASE_URL;
     searchParams.delete('search');
-    searchParams.set('page', String(page));
     const skip = (page - 1) * (limit || 0);
 
     if (search) {
-      url = `${BASE_URL}/?limit=${limit}&skip=${skip}&select=${search}`;
-      searchParams.set('search', search);
+      url = `${BASE_URL}/search?q=${search}`;
+      searchParams.delete('page');
+      searchParams.delete('limit');
+      searchParams.set('search', String(search));
     } else {
       url = `${BASE_URL}/?limit=${limit}&skip=${skip}`;
+      searchParams.set('page', String(page));
+      searchParams.set('limit', String(limit));
     }
 
     navigate('?' + searchParams.toString());
     handleSearch(url);
   };
 
-  useEffect(() => {
+  const resetCurrentPage = () => {
+    if (limitPerPage > 1) {
+      setCurrentPage(1);
+    }
+  };
+
+  const updatePage = (currentPage: number, limitPerPage: number) => {
     const searchTermSaved = localStorage.getItem('searchTermSaved');
     if (searchTermSaved) {
       getPage(currentPage, limitPerPage, searchTermSaved);
     } else {
       getPage(currentPage, limitPerPage);
     }
-  }, [currentPage, searchParams, limitPerPage]);
+  };
+
+  useEffect(() => {
+    resetCurrentPage();
+    updatePage(currentPage, limitPerPage);
+  }, [limitPerPage]);
+
+  useEffect(() => {
+    updatePage(currentPage, limitPerPage);
+  }, [currentPage, searchParams]);
 
   return (
     <React.Fragment>
-      <Search onSearch={handleSearch} onItemsChange={setLimitPerPage} />
+      <Header
+        getPage={getPage}
+        onItemsChange={setLimitPerPage}
+        limitPerPage={limitPerPage}
+      />
       {isLoaded ? (
-        <React.Fragment>
-          <SearchResults results={searchResults} currentPage={currentPage} />
+        <main>
+          <div className="search-result__container">
+            <SearchResults results={searchResults} currentPage={currentPage} />
+            <Outlet />
+          </div>
           <Pagination
             currentPage={currentPage}
             totalPages={Math.ceil(totalCount / limitPerPage)}
             onPageChange={setCurrentPage}
           />
-        </React.Fragment>
+        </main>
       ) : (
         <Loader />
       )}
