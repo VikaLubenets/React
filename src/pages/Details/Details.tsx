@@ -9,7 +9,7 @@ export default function Details() {
   const [isProductLoading, setIsProductLoading] = useState(false);
   const { id } = useParams<{ id: string }>();
 
-  const startLoading = async (id: number) => {
+  const loadDetails = async (id: number) => {
     setIsProductLoading(true);
     const data = await getProductData(id);
     setProductData(data);
@@ -17,7 +17,7 @@ export default function Details() {
   };
 
   useEffect(() => {
-    startLoading(Number(id));
+    loadDetails(Number(id));
   }, [id]);
 
   return (
