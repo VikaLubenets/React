@@ -1,14 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { Component, ReactNode } from 'react';
-
-interface ErrorBoundaryProps {
-  fallback: ReactNode;
-  children: ReactNode;
-}
-
-interface ErrorBoundaryState {
-  hasError: boolean;
-}
+import React, { Component } from 'react';
+import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 
 export default class ErrorBoundary extends Component<
   ErrorBoundaryProps,
