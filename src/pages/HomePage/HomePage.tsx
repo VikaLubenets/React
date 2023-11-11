@@ -23,23 +23,6 @@ export default function HomePage() {
   );
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const сontext: IAppContext = {
-    savedTerm: savedTerm,
-    searchedResults: searchResults,
-    isLoaded: isLoaded,
-    totalCount: totalCount,
-    currentPage: currentPage,
-    limitPerPage: limitPerPage,
-    totalPages: totalPages,
-    setSavedTerm: setSavedTerm,
-    setSearchResults: setSearchResults,
-    setIsLoaded: setIsLoaded,
-    setTotalCount: setTotalCount,
-    setCurrentPage: setCurrentPage,
-    setLimitPerPage: setLimitPerPage,
-    setTotalPages: setTotalPages,
-  };
-
   const handleSearch = async (url: string) => {
     setIsLoaded(false);
     const data = await getData(url);
@@ -90,6 +73,24 @@ export default function HomePage() {
     const totalPages = Math.ceil(totalCount / limitPerPage);
     setTotalPages(totalPages);
   }, [totalCount, limitPerPage]);
+
+  const сontext: IAppContext = {
+    savedTerm: savedTerm,
+    searchedResults: searchResults,
+    isLoaded: isLoaded,
+    totalCount: totalCount,
+    currentPage: currentPage,
+    limitPerPage: limitPerPage,
+    totalPages: totalPages,
+    setSavedTerm: setSavedTerm,
+    setSearchResults: setSearchResults,
+    setIsLoaded: setIsLoaded,
+    setTotalCount: setTotalCount,
+    setCurrentPage: setCurrentPage,
+    setLimitPerPage: setLimitPerPage,
+    setTotalPages: setTotalPages,
+    getPage: getPage,
+  };
 
   return (
     <AppContext.Provider value={сontext}>

@@ -15,6 +15,13 @@ export interface IAppContext {
   setLimitPerPage: ContextSet<number>;
   setSavedTerm: ContextSet<string>;
   setTotalPages: ContextSet<number>;
+  getPage: GetPageFn;
 }
 
 export type ContextSet<T> = (value: React.SetStateAction<T>) => void;
+
+export type GetPageFn = (
+  page: number,
+  limit: number,
+  search?: string | null
+) => void;

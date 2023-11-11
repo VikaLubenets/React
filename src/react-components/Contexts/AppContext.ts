@@ -17,4 +17,5 @@ export const AppContext: React.Context<IAppContext> =
     setCurrentPage: (): void => {},
     setLimitPerPage: (): void => {},
     setTotalPages: (): void => {},
+    getPage: (): void => {},
   });

@@ -28,6 +28,7 @@ export default function SearchResults() {
               to={`/details/${result.id}`}
               key={result.id}
               className="product-container"
+              data-testid="product-container"
             >
               <h2 className="product-name">{`${index + 1}. ${
                 result.title
