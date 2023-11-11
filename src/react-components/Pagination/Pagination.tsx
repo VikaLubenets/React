@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react';
-import { PaginationProps } from './types';
+import { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../../react-components/Contexts/AppContext';
 import './Pagination.css';
 
-export default function Pagination({
-  currentPage,
-  totalPages,
-  onPageChange,
-}: PaginationProps) {
+export default function Pagination() {
   const [pageNumbers, setPageNumbers] = useState<number[]>([]);
+  const { currentPage, totalPages, setCurrentPage } = useContext(AppContext);
 
   useEffect(() => {
     const numbers = Array.from({ length: totalPages }, (_, index) => index + 1);
@@ -22,7 +19,7 @@ export default function Pagination({
             currentPage === number ? ' current' : ''
           }`}
           key={number}
-          onClick={() => onPageChange(number)}
+          onClick={() => setCurrentPage(number)}
         >
           {number}
         </div>

@@ -1,47 +1,29 @@
-import { Product } from '../../utils/GeneralTypes';
-import { MouseEventHandler, useEffect, useState } from 'react';
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from 'react-router-dom';
-import { SearchResultProps } from './types';
 import React from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Product } from '../../utils/GeneralTypes';
+import { AppContext } from '../../react-components/Contexts/AppContext';
 import './SearchResults.css';
 
-export default function SearchResults(props: SearchResultProps) {
-  const { results, currentPage } = props;
+export default function SearchResults() {
+  const { searchedResults } = useContext(AppContext);
   const location = useLocation();
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   useEffect(() => {
     setIsDetailsOpen(location.pathname.includes('details'));
   }, [location]);
 
-  const handleCloseDetailsClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    const target = e.target as HTMLElement;
-    if (
-      target?.classList.contains('search-results') &&
-      !target?.classList.contains('planet-container')
-    ) {
-      setIsDetailsOpen(false);
-      navigate('/');
-    }
-  };
-
   return (
     <React.Fragment>
-      {!results.length ? (
+      {!searchedResults.length ? (
         <div className="no-results">No results</div>
       ) : (
         <Link
           to={`/`}
           className={`search-results ${isDetailsOpen ? 'with-details' : ''}`}
         >
-          {results.map((result, index) => (
+          {searchedResults.map((result, index) => (
             <Link
               to={`/details/${result.id}`}
               key={result.id}
