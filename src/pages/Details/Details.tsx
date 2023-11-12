@@ -21,18 +21,22 @@ export default function Details() {
   }, [id]);
 
   return (
-    <article className="details-section">
+    <article className="details-section" data-testid="details-container">
       {isProductLoading ? (
         <div>Loading...</div>
       ) : (
         <>
-          <Link to={`/`} key={id} className="details__close-btn" />
+          <Link
+            to={`/`}
+            key={id}
+            className="details__close-btn"
+            data-testid="close-button"
+          />
           <div className="details-container">
             {productData && (
               <>
-                <h2 className="details-heading">
-                  Details of product "{productData.title}"
-                </h2>
+                <h2>Details of product</h2>
+                <h3 className="details-heading">{productData.title}</h3>
                 <p className="details-item">
                   {Product.BRAND}: {productData.brand}
                 </p>

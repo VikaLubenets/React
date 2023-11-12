@@ -1,6 +1,6 @@
-import { IProduct } from './GeneralTypes';
 import React from 'react';
 import { IAppContext } from '../react-components/Contexts/types';
+import { IProduct } from './GeneralTypes';
 
 export const mockProductsData: IProduct[] = [
   {

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../utils/GeneralTypes';
 import { ICardProps } from './types';
+import './Card.css';
 
 export default function Card({ result, index }: ICardProps) {
   return (

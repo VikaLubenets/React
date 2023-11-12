@@ -23,6 +23,7 @@ export default function SearchResults() {
         <Link
           to={`/`}
           className={`search-results ${isDetailsOpen ? 'with-details' : ''}`}
+          data-testid="cards-container"
         >
           {searchedResults.map((result, index) => (
             <Card key={result.id} result={result} index={index} />
