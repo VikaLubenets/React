@@ -1,0 +1,9 @@
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-link:visited {
+  text-decoration: none;
+  color: inherit;
+}

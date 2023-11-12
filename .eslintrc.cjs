@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     "plugin:prettier/recommended",
+    "plugin:jest/recommended",
     "prettier",
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules'],
@@ -22,7 +23,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: "script"
   },
-  plugins: ['react-refresh', '@typescript-eslint', 'react-hooks'],
+  plugins: ['react-refresh', '@typescript-eslint', 'react-hooks', 'jest'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
