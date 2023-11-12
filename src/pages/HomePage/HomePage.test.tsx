@@ -50,18 +50,13 @@ test('Click on pagination page updates URL query parameter when page changes', a
       </BrowserRouter>
     );
   });
-
+  expect(window.location.search).toBe('?page=1&limit=10');
   fireEvent.click(screen.getByText('2'));
 
   await waitFor(() => {
     expect(window.location.search).toBe('?page=2&limit=10');
   });
 });
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useParams: jest.fn().mockReturnValue({ id: '1' }),
-}));
 
 test('Clicking on a card triggers an additional API call for detailed information', async () => {
   await act(async () => {
