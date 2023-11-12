@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ErrorMessage from './ErrorMessage';
 
-test('renders error message', () => {
+test('Renders error message', () => {
   render(<ErrorMessage />);
 
   const errorMessageElement = screen.getByText(

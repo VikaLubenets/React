@@ -17,7 +17,7 @@ export default function HomePage() {
   );
   const [searchResults, setSearchResults] = useState<IProduct[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [totalCount, setTotalCount] = useState(10);
+  const [totalCount, setTotalCount] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
   const [limitPerPage, setLimitPerPage] = useState(10);
   const [totalPages, setTotalPages] = useState(

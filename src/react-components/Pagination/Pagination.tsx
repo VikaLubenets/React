@@ -13,7 +13,7 @@ export default function Pagination() {
   }, [totalPages]);
 
   return (
-    <div className="pagination">
+    <div className="pagination" data-testid="pagination">
       {pageNumbers.map((number) => (
         <div
           className={`pagination-item ${

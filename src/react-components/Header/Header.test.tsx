@@ -1,13 +1,9 @@
-/* eslint-disable jest/no-commented-out-tests */
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import 'jest-localstorage-mock';
-import userEvent from '@testing-library/user-event';
 import Header from './Header';
 import { AppContext } from '../Contexts/AppContext';
 import { mockAppContextValue } from '../../utils/MockData';
-import { IAppContext } from '../Contexts/types';
-import { MemoryRouter } from 'react-router-dom';
 
 beforeAll(() => {
   const localStorageMock = {
@@ -43,21 +39,5 @@ test('Clicking Search button saves value to local storage', async () => {
   );
 });
 
-// test('Check that the component retrieves the value from local storage upon mounting', () => {
-//   const savedTermValue = 'Mocked Term';
-//   const mockGetPage = jest.fn();
-
-//   render(
-//     <MemoryRouter initialEntries={['/']}>
-//       <AppContext.Provider value={mockAppContextValue}>
-//         <Header getPage={mockGetPage} />
-//       </AppContext.Provider>
-//     </MemoryRouter>
-//   );
-
-//   expect(window.localStorage.getItem).toHaveBeenCalledTimes(1);
-//   expect(mockAppContextValue.setSavedTerm).toHaveBeenCalledWith(savedTermValue);
-
-//   const searchInput = screen.getByRole('searchbox');
-//   expect(searchInput).toHaveValue(savedTermValue);
-// });
+//Please see the test of using value from the local storage upon mounting in HomePage.test.tsx file
+//This is because in header this value is taken from HomePage's context, where it is added from the LS
