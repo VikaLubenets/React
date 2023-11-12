@@ -1,12 +1,9 @@
-/* eslint-disable jest/no-commented-out-tests */
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { MemoryRouter } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import { mockAppContextValue, mockProductsData } from '../../utils/MockData';
 import { AppContext } from '../Contexts/AppContext';
-import { createMemoryHistory } from 'history';
-import { getProductData } from '../../utils/GlobalFunctions';
 import Card from './Card';
 
 jest.mock('../../utils/GlobalFunctions', () => ({
@@ -16,11 +13,11 @@ jest.mock('../../utils/GlobalFunctions', () => ({
 
 test('Card component renders relevant card data', () => {
   render(
-    <MemoryRouter>
+    <BrowserRouter>
       <AppContext.Provider value={mockAppContextValue}>
         <Card result={mockProductsData[0]} index={0} />
       </AppContext.Provider>
-    </MemoryRouter>
+    </BrowserRouter>
   );
 
   const productContainer = screen.getByTestId('product-container');
@@ -32,40 +29,22 @@ test('Card component renders relevant card data', () => {
   expect(productDescription).toBeInTheDocument();
 });
 
-// test('Clicking on a card opens a detailed card component', async () => {
-//   const history = createMemoryHistory();
-//   render(
-//     <MemoryRouter>
-//       <AppContext.Provider value={mockAppContextValue}>
-//         <Card result={mockProductsData[0]} index={0} />
-//       </AppContext.Provider>
-//     </MemoryRouter>
-//   );
+test('Clicking on a card opens a detailed card component', async () => {
+  render(
+    <BrowserRouter>
+      <AppContext.Provider value={mockAppContextValue}>
+        <Card result={mockProductsData[0]} index={0} />
+      </AppContext.Provider>
+    </BrowserRouter>
+  );
 
-//   await userEvent.click(screen.getByRole('link'));
+  await userEvent.click(screen.getByRole('link'));
 
-//   await waitFor(() => {
-//     expect(history.location.pathname).toEqual(
-//       `/details/${mockProductsData[0].id}`
-//     );
-//   });
-// });
+  await waitFor(() => {
+    expect(window.location.pathname).toEqual(
+      `/details/${mockProductsData[0].id}`
+    );
+  });
+});
 
-// test('Clicking on a card triggers an additional API call for detailed information', async () => {
-//   render(
-//     <MemoryRouter>
-//       <AppContext.Provider value={mockAppContextValue}>
-//         <Card result={mockProductsData[0]} index={0} />
-//       </AppContext.Provider>
-//     </MemoryRouter>
-//   );
-
-//   await userEvent.click(screen.getByTestId('product-container'));
-
-//   await waitFor(
-//     () => {
-//       expect(getProductData).toHaveBeenCalledWith(1);
-//     },
-//     { timeout: 5000 }
-//   );
-// });
+//Please see 3rd test of card click triggers an additional API call in HomePage.test.tsx file

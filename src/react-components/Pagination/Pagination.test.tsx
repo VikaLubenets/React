@@ -9,8 +9,6 @@ import { mockAppContextValue } from '../../utils/MockData';
 //Please see quary params test of URL update upon click on pagination page in HomePage.test.tsx file
 
 test('Renders pagination element', async () => {
-  const history = createMemoryHistory();
-
   render(
     <Router>
       <AppContext.Provider value={mockAppContextValue}>
