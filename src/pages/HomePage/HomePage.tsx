@@ -12,7 +12,9 @@ import { IAppContext } from '../../react-components/Contexts/types';
 import './HomePage.css';
 
 export default function HomePage() {
-  const [savedTerm, setSavedTerm] = useState('');
+  const [savedTerm, setSavedTerm] = useState(
+    localStorage.getItem('savedTerm') || ''
+  );
   const [searchResults, setSearchResults] = useState<IProduct[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [totalCount, setTotalCount] = useState(10);

@@ -3,7 +3,7 @@ import { IAppContext } from './types';
 
 export const AppContext: React.Context<IAppContext> =
   React.createContext<IAppContext>({
-    savedTerm: '',
+    savedTerm: localStorage.getItem('savedTerm') || '',
     searchedResults: [],
     isLoaded: false,
     totalCount: 10,

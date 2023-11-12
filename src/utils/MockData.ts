@@ -35,10 +35,10 @@ export const mockAppContextValue: IAppContext = {
   savedTerm: 'Mocked Term',
   searchedResults: mockProductsData,
   isLoaded: true,
-  totalCount: 50,
-  currentPage: 2,
-  limitPerPage: 10,
-  totalPages: 5,
+  totalCount: 2,
+  currentPage: 1,
+  limitPerPage: 1,
+  totalPages: 2,
   setSavedTerm: jest.fn(),
   setSearchResults: jest.fn(),
   setIsLoaded: jest.fn(),
@@ -66,6 +66,3 @@ export const mockAppContextValueEmpty: IAppContext = {
   setTotalPages: jest.fn(),
   getPage: jest.fn(),
 };
-
-export const AppContextMock: React.Context<IAppContext> =
-  React.createContext<IAppContext>(mockAppContextValue);

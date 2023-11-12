@@ -11,9 +11,11 @@ export default function Header({ getPage }: SearchProps) {
   const handleSearch = () => {
     const term = savedTerm.trim();
     if (term) {
+      localStorage.setItem('savedTerm', term);
       setSavedTerm(term);
       getPage(1, limitPerPage, term);
     } else {
+      localStorage.removeItem('savedTerm');
       getPage(1, limitPerPage);
     }
   };

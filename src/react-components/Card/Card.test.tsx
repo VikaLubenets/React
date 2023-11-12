@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-commented-out-tests */
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
