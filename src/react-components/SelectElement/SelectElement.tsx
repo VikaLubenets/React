@@ -8,6 +8,7 @@ export default function SelectElement() {
 
   const handleSelectClick = (num: number) => {
     dispatch(productsSlice.actions.setLimitPerPage(num));
+    dispatch(productsSlice.actions.setCurrentPage(1));
   };
   const options = [10, 20, 30];
 
