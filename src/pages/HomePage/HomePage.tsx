@@ -4,13 +4,14 @@ import Pagination from '../../react-components/Pagination/Pagination';
 import SearchResults from '../../react-components/SearchResults/SearchResults';
 import Loader from '../../react-components/Loader/Loader';
 import Header from '../../react-components/Header/Header';
-import { useGetDataQuery } from '../../store/api/api';
+import { useGetDataQuery } from '../../api/api';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
 import { productsSlice } from '../../store/reducers/productsReducer';
 import './HomePage.css';
 
 export default function HomePage() {
   const dispatch = useAppDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
   const savedTerm = useAppSelector((state) => state.products.savedTerm);
   const currentPage = useAppSelector((state) => state.products.currentPage);
   const limitPerPage = useAppSelector((state) => state.products.limitPerPage);
@@ -20,17 +21,27 @@ export default function HomePage() {
     search: savedTerm,
   });
 
-  dispatch(
-    productsSlice.actions.setSearchResults(
-      searchResults ? searchResults.products : []
-    )
-  );
+  useEffect(() => {
+    if (savedTerm) {
+      setSearchParams({
+        search: savedTerm,
+        page: String(currentPage),
+        limit: String(limitPerPage),
+      });
+    } else {
+      setSearchParams({
+        page: String(currentPage),
+        limit: String(limitPerPage),
+      });
+    }
+  }, [searchParams, currentPage, limitPerPage, savedTerm]);
 
-  dispatch(
-    productsSlice.actions.setTotalCount(
-      searchResults ? searchResults.total : 10
-    )
-  );
+  useEffect(() => {
+    if (searchResults) {
+      dispatch(productsSlice.actions.setSearchResults(searchResults.products));
+      dispatch(productsSlice.actions.setTotalCount(searchResults.total));
+    }
+  }, [searchResults]);
 
   return (
     <React.Fragment>

@@ -5,7 +5,7 @@ import { Product } from '../../utils/GeneralTypes';
 import { AppContext } from '../../react-components/Contexts/AppContext';
 import './SearchResults.css';
 import Card from '../Card/Card';
-import { useGetDataQuery } from '../../store/api/api';
+import { useGetDataQuery } from '../../api/api';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
 import { productsSlice } from '../../store/reducers/productsReducer';
 

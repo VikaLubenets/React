@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { useGetProductDataQuery } from '../../store/api/api';
+import { useGetProductDataQuery } from '../../api/api';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
 import { Product } from '../../utils/GeneralTypes';
 import './Details.css';
