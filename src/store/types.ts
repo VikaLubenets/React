@@ -7,13 +7,15 @@ export interface ActionType {
 }
 
 export interface productsState {
-  productsData: IProduct[];
+  searchResults: IProduct[];
+  savedTerm: string;
   isLoading: boolean;
   totalCount: number;
   currentPage: number;
   limitPerPage: number;
   totalPages: number;
   error: null | string;
+  isDetailsOpen: boolean;
 }
 
 export interface RootState {

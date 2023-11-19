@@ -6,8 +6,10 @@ import App from './App';
 import ErrorBoundary from './react-components/ErrorBoundary/ErrorBoundary';
 import ErrorMessage from './react-components/ErrorMessage/ErrorMessage';
 import { setupStore } from './store';
+import { initializeSavedTerm } from './store/reducers/productsReducer';
 
 const store = setupStore();
+store.dispatch(initializeSavedTerm());
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

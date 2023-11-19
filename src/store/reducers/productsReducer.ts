@@ -1,42 +1,53 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  FETCH_PRODUCTS_10,
-  FETCH_PRODUCTS_ERROR,
-  FETCH_PRODUCTS_SUCSESS,
-} from '../../utils/Constants';
 import { IProduct, IProductList } from '../../utils/GeneralTypes';
-import { ActionType, productsState } from '../types';
+import { ActionType, AppDispatch, productsState } from '../types';
 
 const initialState: productsState = {
-  productsData: [] as IProduct[],
+  searchResults: [] as IProduct[],
+  savedTerm: '',
   isLoading: false,
   totalCount: 10,
   currentPage: 1,
   limitPerPage: 10,
   totalPages: 1,
   error: null,
+  isDetailsOpen: false,
+};
+
+export const initializeSavedTerm = () => (dispatch: AppDispatch) => {
+  const initialSavedTerm = localStorage.getItem('savedTerm');
+  if (initialSavedTerm) {
+    dispatch(productsSlice.actions.setSavedTerm(initialSavedTerm));
+  }
 };
 
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    updateTotalCount(state, action: PayloadAction<IProductList>) {
-      state.totalCount = action.payload.total;
+    setSavedTerm(state, action: PayloadAction<string>) {
+      state.savedTerm = action.payload;
     },
-    fetchingData(state) {
-      state.isLoading = true;
+    setSearchResults(state, action: PayloadAction<IProduct[]>) {
+      state.searchResults = action.payload;
     },
-    fetchingDataSuccess(state, action: PayloadAction<IProductList>) {
-      state.isLoading = false;
-      state.error = '';
-      state.productsData = action.payload.products;
+    setIsLoading(state, action: PayloadAction<boolean>) {
+      state.isLoading = action.payload;
     },
-    fetchingDataError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
+    setTotalCount(state, action: PayloadAction<number>) {
+      state.totalCount = action.payload;
+    },
+    setCurrentPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
+    },
+    setLimitPerPage(state, action: PayloadAction<number>) {
+      state.limitPerPage = action.payload;
+    },
+    setTotalPages(state, action: PayloadAction<number>) {
+      state.totalPages = action.payload;
+    },
+    setIsDetailsOpen(state, action) {
+      state.isDetailsOpen = action.payload;
     },
   },
 });
-
-export default productsSlice.reducer;

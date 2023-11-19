@@ -15,7 +15,7 @@ export const api = createApi({
       IProductList,
       { page: number; limit: number; search?: string }
     >({
-      query: ({ page, limit, search }) => {
+      query: ({ page = 1, limit = 10, search }) => {
         const skip = (page - 1) * limit;
 
         if (search) {
