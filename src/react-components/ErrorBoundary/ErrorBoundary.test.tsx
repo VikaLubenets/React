@@ -19,8 +19,6 @@ test('ErrorBoundary renders children when there is no error', () => {
 });
 
 test('ErrorBoundary renders fallback component when there is an error', async () => {
-  jest.spyOn(console, 'error').mockImplementation(() => {});
-
   const { getByText } = render(
     <ErrorBoundary fallback={<FallbackComponent />}>
       <div>
