@@ -1,15 +1,1 @@
 export const BASE_URL = 'https://dummyjson.com/products';
-
-export const FETCH_PRODUCTS_10 = 'FETCH_PRODUCTS_10';
-
-export const FETCH_PRODUCTS_20 = 'FETCH_PRODUCTS_20';
-
-export const FETCH_PRODUCTS_30 = 'FETCH_PRODUCTS_30';
-
-export const FETCH_PRODUCTS_SUCSESS = 'FETCH_PRODUCTS_SUCSESS';
-
-export const FETCH_PRODUCTS_ERROR = 'FETCH_PRODUCTS_ERROR';
-
-export const CHANGE_PAGE = 'CHANGE_PAGE';
-
-export const CHANGE_TOTAL_COUNT = 'CHANGE_TOTAL_COUNT';

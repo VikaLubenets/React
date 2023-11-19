@@ -16,6 +16,7 @@ export interface productsState {
   totalPages: number;
   error: null | string;
   isDetailsOpen: boolean;
+  isProductLoading: boolean;
 }
 
 export interface RootState {

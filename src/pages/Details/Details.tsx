@@ -1,24 +1,19 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useGetProductDataQuery } from '../../store/api/api';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
 import { IProduct, Product } from '../../utils/GeneralTypes';
-import { getProductData } from '../../utils/GlobalFunctions';
 import './Details.css';
 
 export default function Details() {
-  const [productData, setProductData] = useState<IProduct | null>(null);
-  const [isProductLoading, setIsProductLoading] = useState(false);
+  const dispatch = useAppDispatch();
+  const isProductLoading = useAppSelector(
+    (state) => state.products.isProductLoading
+  );
   const { id } = useParams<{ id: string }>();
+  const productId = parseInt(id!, 10);
 
-  const loadDetails = async (id: number) => {
-    setIsProductLoading(true);
-    const data = await getProductData(id);
-    setProductData(data);
-    setIsProductLoading(false);
-  };
-
-  useEffect(() => {
-    loadDetails(Number(id));
-  }, [id]);
+  const { data: productData } = useGetProductDataQuery(productId);
 
   return (
     <article className="details-section" data-testid="details-container">

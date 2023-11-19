@@ -12,6 +12,7 @@ const initialState: productsState = {
   totalPages: 1,
   error: null,
   isDetailsOpen: false,
+  isProductLoading: false,
 };
 
 export const initializeSavedTerm = () => (dispatch: AppDispatch) => {
@@ -47,6 +48,9 @@ export const productsSlice = createSlice({
       state.totalPages = action.payload;
     },
     setIsDetailsOpen(state, action) {
+      state.isDetailsOpen = action.payload;
+    },
+    setIsProductLoading(state, action) {
       state.isDetailsOpen = action.payload;
     },
   },

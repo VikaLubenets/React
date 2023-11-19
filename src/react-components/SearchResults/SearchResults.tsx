@@ -12,10 +12,8 @@ import { productsSlice } from '../../store/reducers/productsReducer';
 export default function SearchResults() {
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const savedTerm = useAppSelector((state) => state.products.savedTerm);
+  const searchResults = useAppSelector((state) => state.products.searchResults);
   const isDetailsOpen = useAppSelector((state) => state.products.isDetailsOpen);
-  const currentPage = useAppSelector((state) => state.products.currentPage);
-  const limitPerPage = useAppSelector((state) => state.products.limitPerPage);
 
   useEffect(() => {
     dispatch(
@@ -25,30 +23,9 @@ export default function SearchResults() {
     );
   }, [location]);
 
-  const { data: searchResults } = useGetDataQuery({
-    page: currentPage,
-    limit: limitPerPage,
-    search: savedTerm,
-  });
-
-  const hasResults =
-    searchResults &&
-    searchResults.products &&
-    searchResults.products.length > 0;
-
-  dispatch(
-    productsSlice.actions.setSearchResults(
-      hasResults ? searchResults.products : []
-    )
-  );
-
-  dispatch(
-    productsSlice.actions.setTotalCount(hasResults ? searchResults.total : 10)
-  );
-
   return (
     <React.Fragment>
-      {!searchResults || !searchResults.products.length ? (
+      {!searchResults || !searchResults.length ? (
         <div className="no-results">No results</div>
       ) : (
         <Link
@@ -56,7 +33,7 @@ export default function SearchResults() {
           className={`search-results ${isDetailsOpen ? 'with-details' : ''}`}
           data-testid="cards-container"
         >
-          {searchResults.products.map((result, index) => (
+          {searchResults.map((result, index) => (
             <Card key={result.id} result={result} index={index} />
           ))}
         </Link>
