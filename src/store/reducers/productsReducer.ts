@@ -5,14 +5,12 @@ import { ActionType, AppDispatch, productsState } from '../types';
 const initialState: productsState = {
   searchResults: [] as IProduct[],
   savedTerm: '',
-  isLoading: false,
   totalCount: 10,
   currentPage: 1,
   limitPerPage: 10,
   totalPages: 1,
   error: null,
   isDetailsOpen: false,
-  isProductLoading: false,
 };
 
 export const initializeSavedTerm = () => (dispatch: AppDispatch) => {
@@ -32,9 +30,6 @@ export const productsSlice = createSlice({
     setSearchResults(state, action: PayloadAction<IProduct[]>) {
       state.searchResults = action.payload;
     },
-    setIsLoading(state, action: PayloadAction<boolean>) {
-      state.isLoading = action.payload;
-    },
     setTotalCount(state, action: PayloadAction<number>) {
       state.totalCount = action.payload;
     },
@@ -48,9 +43,6 @@ export const productsSlice = createSlice({
       state.totalPages = action.payload;
     },
     setIsDetailsOpen(state, action) {
-      state.isDetailsOpen = action.payload;
-    },
-    setIsProductLoading(state, action) {
       state.isDetailsOpen = action.payload;
     },
   },

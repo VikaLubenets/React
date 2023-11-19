@@ -9,14 +9,12 @@ export interface ActionType {
 export interface productsState {
   searchResults: IProduct[];
   savedTerm: string;
-  isLoading: boolean;
   totalCount: number;
   currentPage: number;
   limitPerPage: number;
   totalPages: number;
   error: null | string;
   isDetailsOpen: boolean;
-  isProductLoading: boolean;
 }
 
 export interface RootState {

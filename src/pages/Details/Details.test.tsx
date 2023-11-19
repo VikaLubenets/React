@@ -1,12 +1,25 @@
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
 import { mockProductsData } from '../../utils/MockData';
 import Details from './Details';
 
-jest.mock('../../utils/GlobalFunctions', () => ({
-  __esModule: true,
-  getProductData: jest.fn(() => Promise.resolve(mockProductsData[0])),
+let queryCounter = 0;
+
+jest.mock('../../api/api', () => ({
+  ...jest.requireActual('../../api/api'),
+  useGetProductDataQuery: jest.fn(() => {
+    queryCounter++;
+    return {
+      data: mockProductsData[0],
+      isLoading: queryCounter === 1,
+    };
+  }),
+}));
+
+jest.mock('@reduxjs/toolkit/query/react', () => ({
+  ...jest.requireActual('@reduxjs/toolkit/query/react'),
+  fetchBaseQuery: jest.fn(),
 }));
 
 test('Displays loading indicator while fetching data', async () => {
@@ -53,4 +66,8 @@ test('Hides component on close button click', async () => {
   await waitFor(() =>
     expect(screen.queryByTestId('details-container')).not.toBeInTheDocument()
   );
+});
+
+afterAll(() => {
+  jest.clearAllMocks();
 });

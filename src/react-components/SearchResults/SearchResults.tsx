@@ -1,13 +1,10 @@
 import React from 'react';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Product } from '../../utils/GeneralTypes';
-import { AppContext } from '../../react-components/Contexts/AppContext';
-import './SearchResults.css';
-import Card from '../Card/Card';
-import { useGetDataQuery } from '../../api/api';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
 import { productsSlice } from '../../store/reducers/productsReducer';
+import Card from '../Card/Card';
+import './SearchResults.css';
 
 export default function SearchResults() {
   const dispatch = useAppDispatch();

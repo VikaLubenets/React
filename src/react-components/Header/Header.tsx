@@ -8,7 +8,7 @@ import './Header.css';
 export default function Header() {
   const dispatch = useAppDispatch();
   const savedTerm = useAppSelector((state) => state.products.savedTerm);
-  const [term, setTerm] = useState(savedTerm || '');
+  const [term, setTerm] = useState(localStorage.getItem('savedTerm') || '');
 
   const handleSearch = () => {
     if (term) {
