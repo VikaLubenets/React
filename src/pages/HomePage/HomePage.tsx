@@ -14,28 +14,23 @@ export default function HomePage() {
   const savedTerm = useAppSelector((state) => state.products.savedTerm);
   const currentPage = useAppSelector((state) => state.products.currentPage);
   const limitPerPage = useAppSelector((state) => state.products.limitPerPage);
-  const { data: searchResults } = useGetDataQuery({
+  const { data: searchResults, isLoading } = useGetDataQuery({
     page: currentPage,
     limit: limitPerPage,
     search: savedTerm,
   });
 
-  const hasResults =
-    searchResults &&
-    searchResults.products &&
-    searchResults.products.length > 0;
-
   dispatch(
     productsSlice.actions.setSearchResults(
-      hasResults ? searchResults.products : []
+      searchResults ? searchResults.products : []
     )
   );
 
   dispatch(
-    productsSlice.actions.setTotalCount(hasResults ? searchResults.total : 10)
+    productsSlice.actions.setTotalCount(
+      searchResults ? searchResults.total : 10
+    )
   );
-
-  const isLoading = useAppSelector((state) => state.products.isLoading);
 
   return (
     <React.Fragment>

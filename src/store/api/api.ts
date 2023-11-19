@@ -17,12 +17,14 @@ export const api = createApi({
     >({
       query: ({ page = 1, limit = 10, search }) => {
         const skip = (page - 1) * limit;
-
-        if (search) {
-          return `search?q=${search}&limit=${limit}&skip=${skip}`;
-        } else {
-          return `?limit=${limit}&skip=${skip}`;
-        }
+        return {
+          url: '/',
+          params: {
+            search: search,
+            limit: limit,
+            skip: skip,
+          },
+        };
       },
     }),
   }),
