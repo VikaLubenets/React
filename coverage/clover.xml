@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1699807254591" clover="3.2.0">
-  <project timestamp="1699807254592" name="All files">
-    <metrics statements="165" coveredstatements="138" conditionals="24" coveredconditionals="17" methods="36" coveredmethods="29" elements="225" coveredelements="184" complexity="0" loc="165" ncloc="165" packages="13" files="14" classes="14"/>
+<coverage generated="1700413668050" clover="3.2.0">
+  <project timestamp="1700413668050" name="All files">
+    <metrics statements="154" coveredstatements="135" conditionals="25" coveredconditionals="21" methods="43" coveredmethods="40" elements="222" coveredelements="196" complexity="0" loc="154" ncloc="154" packages="13" files="14" classes="14"/>
     <package name="src">
-      <metrics statements="13" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="18" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\App.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -14,45 +14,42 @@
         <line num="7" count="1" type="stmt"/>
       </file>
       <file name="main.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\main.tsx">
-        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="12" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.pages.Details">
-      <metrics statements="17" coveredstatements="17" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
       <file name="Details.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\pages\Details\Details.tsx">
-        <metrics statements="17" coveredstatements="17" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="9" type="stmt"/>
-        <line num="9" count="9" type="stmt"/>
-        <line num="10" count="9" type="stmt"/>
-        <line num="12" count="9" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
         <line num="13" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
-        <line num="19" count="9" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
-        <line num="23" count="9" type="stmt"/>
       </file>
     </package>
     <package name="src.pages.HomePage">
-      <metrics statements="48" coveredstatements="46" conditionals="10" coveredconditionals="7" methods="7" coveredmethods="7"/>
+      <metrics statements="26" coveredstatements="25" conditionals="5" coveredconditionals="3" methods="6" coveredmethods="6"/>
       <file name="HomePage.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\pages\HomePage\HomePage.tsx">
-        <metrics statements="48" coveredstatements="46" conditionals="10" coveredconditionals="7" methods="7" coveredmethods="7"/>
+        <metrics statements="26" coveredstatements="25" conditionals="5" coveredconditionals="3" methods="6" coveredmethods="6"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
@@ -61,44 +58,21 @@
         <line num="9" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="23" type="stmt"/>
-        <line num="18" count="22" type="stmt"/>
-        <line num="19" count="22" type="stmt"/>
-        <line num="20" count="22" type="stmt"/>
-        <line num="21" count="22" type="stmt"/>
-        <line num="22" count="22" type="stmt"/>
-        <line num="23" count="22" type="stmt"/>
-        <line num="26" count="22" type="stmt"/>
-        <line num="28" count="22" type="stmt"/>
-        <line num="29" count="12" type="stmt"/>
-        <line num="30" count="12" type="stmt"/>
-        <line num="31" count="12" type="stmt"/>
-        <line num="32" count="12" type="stmt"/>
-        <line num="33" count="12" type="stmt"/>
-        <line num="36" count="22" type="cond" truecount="0" falsecount="1"/>
-        <line num="37" count="12" type="stmt"/>
-        <line num="38" count="12" type="stmt"/>
-        <line num="39" count="12" type="cond" truecount="1" falsecount="1"/>
-        <line num="41" count="12" type="cond" truecount="1" falsecount="1"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="49" count="12" type="stmt"/>
-        <line num="50" count="12" type="stmt"/>
-        <line num="56" count="12" type="stmt"/>
-        <line num="59" count="22" type="stmt"/>
-        <line num="60" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="61" count="3" type="stmt"/>
-        <line num="65" count="22" type="stmt"/>
-        <line num="66" count="3" type="stmt"/>
-        <line num="67" count="3" type="stmt"/>
-        <line num="70" count="22" type="stmt"/>
-        <line num="71" count="9" type="stmt"/>
-        <line num="74" count="22" type="stmt"/>
-        <line num="75" count="6" type="stmt"/>
-        <line num="76" count="6" type="stmt"/>
-        <line num="79" count="22" type="stmt"/>
-        <line num="97" count="22" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.pages.Page404">
@@ -118,41 +92,41 @@
         <line num="2" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
-        <line num="7" count="98" type="stmt"/>
+        <line num="7" count="51" type="stmt"/>
       </file>
     </package>
     <package name="src.react-components.ErrorBoundary">
-      <metrics statements="12" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="4" coveredmethods="4"/>
       <file name="ErrorBoundary.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\react-components\ErrorBoundary\ErrorBoundary.tsx">
-        <metrics statements="12" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+        <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="4" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.react-components.ErrorButton">
-      <metrics statements="10" coveredstatements="8" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
       <file name="ErrorButton.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\react-components\ErrorButton\ErrorButton.tsx">
-        <metrics statements="10" coveredstatements="8" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="2"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="5" count="20" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="8" count="4" type="cond" truecount="0" falsecount="1"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="13" count="20" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="17" count="20" type="stmt"/>
+        <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="9" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
       </file>
     </package>
     <package name="src.react-components.ErrorMessage">
@@ -165,87 +139,102 @@
       </file>
     </package>
     <package name="src.react-components.Header">
-      <metrics statements="17" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+      <metrics statements="20" coveredstatements="18" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="5"/>
       <file name="Header.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\react-components\Header\Header.tsx">
-        <metrics statements="17" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <metrics statements="20" coveredstatements="18" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="5"/>
         <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
         <line num="3" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
         <line num="6" count="3" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
-        <line num="9" count="20" type="stmt"/>
-        <line num="11" count="20" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="14" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="23" count="7" type="stmt"/>
+        <line num="24" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="7" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.react-components.Loader">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Loader.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\react-components\Loader\Loader.tsx">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="2" count="12" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.react-components.Pagination">
-      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+      <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
       <file name="Pagination.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\react-components\Pagination\Pagination.tsx">
-        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="7" count="12" type="stmt"/>
-        <line num="8" count="12" type="stmt"/>
-        <line num="10" count="12" type="stmt"/>
-        <line num="11" count="12" type="stmt"/>
-        <line num="12" count="6" type="stmt"/>
-        <line num="15" count="12" type="stmt"/>
-        <line num="18" count="12" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.react-components.SearchResults">
-      <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
-      <file name="SearchResults.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\react-components\SearchResults\SearchResults.tsx">
-        <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
         <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.react-components.SearchResults">
+      <metrics statements="16" coveredstatements="16" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="5"/>
+      <file name="SearchResults.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\react-components\SearchResults\SearchResults.tsx">
+        <metrics statements="16" coveredstatements="16" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="5"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
         <line num="6" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
         <line num="9" count="3" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="9" type="stmt"/>
-        <line num="12" count="9" type="stmt"/>
-        <line num="14" count="9" type="stmt"/>
-        <line num="15" count="8" type="stmt"/>
-        <line num="18" count="9" type="stmt"/>
-        <line num="29" count="96" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="34" count="48" type="stmt"/>
       </file>
     </package>
     <package name="src.react-components.SelectElement">
-      <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <metrics statements="12" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
       <file name="SelectElement.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\react-components\SelectElement\SelectElement.tsx">
-        <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
-        <line num="1" count="3" type="stmt"/>
+        <metrics statements="12" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+        <line num="2" count="3" type="stmt"/>
         <line num="3" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
         <line num="6" count="3" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="8" count="20" type="stmt"/>
-        <line num="10" count="20" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="19" count="60" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="24" count="18" type="stmt"/>
       </file>
     </package>
   </project>

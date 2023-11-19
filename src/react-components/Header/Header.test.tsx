@@ -2,8 +2,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import 'jest-localstorage-mock';
 import Header from './Header';
-import { AppContext } from '../Contexts/AppContext';
-import { mockAppContextValue } from '../../utils/MockData';
+import { mockProductsData } from '../../utils/MockData';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
 
 beforeAll(() => {
   const localStorageMock = {
@@ -16,20 +17,26 @@ beforeAll(() => {
   });
 });
 
-test('Clicking Search button saves value to local storage', async () => {
-  const mockGetPage = jest.fn();
+const mockStore = configureStore();
 
+const store = mockStore({
+  products: {
+    searchResults: mockProductsData,
+    savedTerm: '',
+  },
+});
+
+test('Clicking Search button saves value to local storage', async () => {
   render(
-    <AppContext.Provider value={mockAppContextValue}>
-      <Header getPage={mockGetPage} />
-    </AppContext.Provider>
+    <Provider store={store}>
+      <Header />
+    </Provider>
   );
 
   const searchInput = screen.getByRole('searchbox');
   const searchButton = screen.getByRole('button', { name: /search/i });
 
   fireEvent.change(searchInput, { target: { value: 'Mocked Term' } });
-  mockAppContextValue.savedTerm = 'Mocked Term';
   fireEvent.click(searchButton);
 
   expect(window.localStorage.setItem).toHaveBeenCalledTimes(1);
@@ -39,5 +46,16 @@ test('Clicking Search button saves value to local storage', async () => {
   );
 });
 
-//Please see the test of using value from the local storage upon mounting in HomePage.test.tsx file
-//This is because in header this value is taken from HomePage's context, where it is added from the LS
+test('Search container uses savedTerm from local storage if not empty', async () => {
+  render(
+    <Provider store={store}>
+      <Header />
+    </Provider>
+  );
+
+  expect(window.localStorage.getItem).toHaveBeenCalledWith('savedTerm');
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+});

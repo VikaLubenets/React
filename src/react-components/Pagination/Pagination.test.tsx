@@ -1,22 +1,30 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { createMemoryHistory } from 'history';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { AppContext } from '../Contexts/AppContext';
+import { BrowserRouter } from 'react-router-dom';
 import Pagination from './Pagination';
-import { mockAppContextValue } from '../../utils/MockData';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import { mockProductsData } from '../../utils/MockData';
 
 //Please see quary params test of URL update upon click on pagination page in HomePage.test.tsx file
 
 test('Renders pagination element', async () => {
+  const mockStore = configureStore();
+
+  const store = mockStore({
+    products: {
+      searchResults: mockProductsData,
+    },
+  });
+
   render(
-    <Router>
-      <AppContext.Provider value={mockAppContextValue}>
+    <Provider store={store}>
+      <BrowserRouter>
         <Pagination />
-      </AppContext.Provider>
-    </Router>
+      </BrowserRouter>
+    </Provider>
   );
 
-  const paginationContainer = screen.getByTestId(/pagination/i) as HTMLElement;
+  const paginationContainer = screen.getByTestId('pagination');
   expect(paginationContainer).toBeInTheDocument();
 });

@@ -1,33 +1,37 @@
-import { ChangeEvent, useContext } from 'react';
-import { SearchProps } from './types';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
+import { productsSlice } from '../../store/reducers/productsReducer';
 import ErrorButton from '../ErrorButton/ErrorButton';
 import SelectElement from '../SelectElement/SelectElement';
-import { AppContext } from '../../react-components/Contexts/AppContext';
 import './Header.css';
 
-export default function Header({ getPage }: SearchProps) {
-  const { savedTerm, setSavedTerm, limitPerPage } = useContext(AppContext);
+export default function Header() {
+  const dispatch = useAppDispatch();
+  const savedTerm = useAppSelector((state) => state.products.savedTerm);
+  const [term, setTerm] = useState(localStorage.getItem('savedTerm') || '');
 
   const handleSearch = () => {
-    const term = savedTerm.trim();
     if (term) {
+      dispatch(productsSlice.actions.setSavedTerm(term));
       localStorage.setItem('savedTerm', term);
-      setSavedTerm(term);
-      getPage(1, limitPerPage, term);
     } else {
       localStorage.removeItem('savedTerm');
-      getPage(1, limitPerPage);
+      dispatch(productsSlice.actions.setSavedTerm(''));
     }
   };
+
+  useEffect(() => {
+    setTerm(savedTerm || '');
+  }, [savedTerm]);
 
   return (
     <div className="search-line">
       <input
         type="search"
-        value={savedTerm}
-        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-          setSavedTerm(event.target.value)
-        }
+        value={term}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          setTerm(event.target.value.trim());
+        }}
       />
       <button className="search-button" onClick={handleSearch}>
         Search

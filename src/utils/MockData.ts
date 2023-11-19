@@ -1,5 +1,3 @@
-import React from 'react';
-import { IAppContext } from '../react-components/Contexts/types';
 import { IProduct } from './GeneralTypes';
 
 export const mockProductsData: IProduct[] = [
@@ -160,39 +158,3 @@ export const mockProductsData: IProduct[] = [
     images: ['path/to/image2_1', 'path/to/image2_2'],
   },
 ];
-
-export const mockAppContextValue: IAppContext = {
-  savedTerm: 'Mocked Term',
-  searchedResults: mockProductsData,
-  isLoaded: true,
-  totalCount: 12,
-  currentPage: 1,
-  limitPerPage: 10,
-  totalPages: 2,
-  setSavedTerm: jest.fn(),
-  setSearchResults: jest.fn(),
-  setIsLoaded: jest.fn(),
-  setTotalCount: jest.fn(),
-  setCurrentPage: jest.fn(),
-  setLimitPerPage: jest.fn(),
-  setTotalPages: jest.fn(),
-  getPage: jest.fn(),
-};
-
-export const mockAppContextValueEmpty: IAppContext = {
-  savedTerm: 'Mocked Term',
-  searchedResults: [],
-  isLoaded: true,
-  totalCount: 50,
-  currentPage: 2,
-  limitPerPage: 10,
-  totalPages: 5,
-  setSavedTerm: jest.fn(),
-  setSearchResults: jest.fn(),
-  setIsLoaded: jest.fn(),
-  setTotalCount: jest.fn(),
-  setCurrentPage: jest.fn(),
-  setLimitPerPage: jest.fn(),
-  setTotalPages: jest.fn(),
-  getPage: jest.fn(),
-};

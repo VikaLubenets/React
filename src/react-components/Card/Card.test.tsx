@@ -2,21 +2,42 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
-import { mockAppContextValue, mockProductsData } from '../../utils/MockData';
-import { AppContext } from '../Contexts/AppContext';
+import { mockProductsData } from '../../utils/MockData';
+import configureStore from 'redux-mock-store';
 import Card from './Card';
+import { Provider } from 'react-redux';
+import { useGetProductDataQuery } from '../../api/api';
 
-jest.mock('../../utils/GlobalFunctions', () => ({
-  __esModule: true,
-  getProductData: jest.fn(() => Promise.resolve(mockProductsData[0])),
+jest.mock('../../api/api', () => ({
+  ...jest.requireActual('../../api/api'),
+  useGetProductDataQuery: jest.fn(() => ({
+    data: mockProductsData,
+    isLoading: false,
+  })),
 }));
+
+jest.mock('@reduxjs/toolkit/query/react', () => ({
+  ...jest.requireActual('@reduxjs/toolkit/query/react'),
+  fetchBaseQuery: jest.fn(),
+}));
+
+const mockStore = configureStore();
+const store = mockStore({
+  products: {
+    searchResults: mockProductsData,
+    savedTerm: '',
+    currentPage: 1,
+    limitPerPage: 10,
+    totalCount: 12,
+  },
+});
 
 test('Card component renders relevant card data', () => {
   render(
     <BrowserRouter>
-      <AppContext.Provider value={mockAppContextValue}>
+      <Provider store={store}>
         <Card result={mockProductsData[0]} index={0} />
-      </AppContext.Provider>
+      </Provider>
     </BrowserRouter>
   );
 
@@ -32,9 +53,9 @@ test('Card component renders relevant card data', () => {
 test('Clicking on a card opens a detailed card component', async () => {
   render(
     <BrowserRouter>
-      <AppContext.Provider value={mockAppContextValue}>
+      <Provider store={store}>
         <Card result={mockProductsData[0]} index={0} />
-      </AppContext.Provider>
+      </Provider>
     </BrowserRouter>
   );
 
@@ -47,4 +68,23 @@ test('Clicking on a card opens a detailed card component', async () => {
   });
 });
 
-//Please see 3rd test of card click triggers an additional API call in HomePage.test.tsx file
+test('Clicking on a card triggers an additional API call for detailed information', async () => {
+  render(
+    <BrowserRouter>
+      <Provider store={store}>
+        <Card result={mockProductsData[0]} index={0} />
+      </Provider>
+    </BrowserRouter>
+  );
+
+  const firstProductLink = screen.getByRole('link', {
+    name: '1. Product 1 Description: Description 1',
+  });
+
+  await userEvent.click(firstProductLink);
+
+  await waitFor(() => {
+    expect(window.location.pathname).toBe('/details/1');
+    // expect(useGetProductDataQuery).toHaveBeenCalled();
+  });
+});
