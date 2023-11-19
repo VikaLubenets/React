@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1699807345433" clover="3.2.0">
-  <project timestamp="1699807345434" name="All files">
-    <metrics statements="165" coveredstatements="138" conditionals="24" coveredconditionals="17" methods="36" coveredmethods="29" elements="225" coveredelements="184" complexity="0" loc="165" ncloc="165" packages="13" files="14" classes="14"/>
+<coverage generated="1700296053790" clover="3.2.0">
+  <project timestamp="1700296053791" name="All files">
+    <metrics statements="167" coveredstatements="138" conditionals="24" coveredconditionals="17" methods="36" coveredmethods="29" elements="227" coveredelements="184" complexity="0" loc="167" ncloc="167" packages="13" files="14" classes="14"/>
     <package name="src">
-      <metrics statements="13" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="15" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\App.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -14,14 +14,16 @@
         <line num="7" count="1" type="stmt"/>
       </file>
       <file name="main.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\React\src\main.tsx">
-        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.pages.Details">

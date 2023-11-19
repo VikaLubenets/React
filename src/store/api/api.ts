@@ -7,10 +7,23 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getProductData: builder.query<IProduct, number>({
-      query: (itemId) => `${itemId}`,
+      query: (itemId) => ({
+        url: `${itemId}`,
+      }),
     }),
-    getData: builder.query<IProductList, string>({
-      query: (url) => url,
+    getData: builder.query<
+      IProductList,
+      { page: number; limit: number; search?: string }
+    >({
+      query: ({ page, limit, search }) => {
+        const skip = (page - 1) * limit;
+
+        if (search) {
+          return `search?q=${search}&limit=${limit}&skip=${skip}`;
+        } else {
+          return `?limit=${limit}&skip=${skip}`;
+        }
+      },
     }),
   }),
 });

@@ -5,7 +5,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import ErrorBoundary from './react-components/ErrorBoundary/ErrorBoundary';
 import ErrorMessage from './react-components/ErrorMessage/ErrorMessage';
-import store from './store';
+import { setupStore } from './store';
+
+const store = setupStore();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

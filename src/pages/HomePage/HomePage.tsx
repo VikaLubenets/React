@@ -10,6 +10,7 @@ import Header from '../../react-components/Header/Header';
 import { AppContext } from '../../react-components/Contexts/AppContext';
 import { IAppContext } from '../../react-components/Contexts/types';
 import './HomePage.css';
+import { useGetDataQuery } from '../../store/api/api';
 
 export default function HomePage() {
   const [savedTerm, setSavedTerm] = useState(
