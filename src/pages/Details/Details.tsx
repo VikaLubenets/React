@@ -1,28 +1,18 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { IProduct, Product } from '../../utils/GeneralTypes';
-import { getProductData } from '../../utils/GlobalFunctions';
+import { Link, useParams } from 'react-router-dom';
+import { useGetProductDataQuery } from '../../api/api';
+import { Product } from '../../utils/GeneralTypes';
 import './Details.css';
 
 export default function Details() {
-  const [productData, setProductData] = useState<IProduct | null>(null);
-  const [isProductLoading, setIsProductLoading] = useState(false);
   const { id } = useParams<{ id: string }>();
 
-  const loadDetails = async (id: number) => {
-    setIsProductLoading(true);
-    const data = await getProductData(id);
-    setProductData(data);
-    setIsProductLoading(false);
-  };
-
-  useEffect(() => {
-    loadDetails(Number(id));
-  }, [id]);
+  const { data: productData, isLoading } = useGetProductDataQuery(
+    parseInt(id!, 10)
+  );
 
   return (
     <article className="details-section" data-testid="details-container">
-      {isProductLoading ? (
+      {isLoading ? (
         <div>Loading...</div>
       ) : (
         <>
