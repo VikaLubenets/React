@@ -1,17 +1,19 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useContext } from 'react';
 import { ISelectElements } from './types';
+import { AppContext } from '../../react-components/Contexts/AppContext';
 import './SelectElement.css';
 
-export default function SelectElement(props: ISelectElements) {
+export default function SelectElement() {
+  const { setLimitPerPage } = useContext(AppContext);
   const [options] = useState([10, 20, 30]);
 
-  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const selectedItemsAmount = parseInt(event.target.value, 10);
-    props.onItemsChange(selectedItemsAmount);
-  };
-
   return (
-    <select className="select" onChange={handleSelectChange}>
+    <select
+      className="select"
+      onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+        setLimitPerPage(parseInt(event.target.value, 10))
+      }
+    >
       <option disabled>Select Items Quantity</option>
       {options.map((option, index) => (
         <option key={index} value={option}>
