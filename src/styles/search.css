@@ -1,0 +1,41 @@
+.search-line{
+    padding-bottom: 30px;
+    padding-top: 5vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(160, 216, 160);
+}
+
+.search-button{
+    cursor: pointer;
+    height: 30px;
+    width: 60px;
+}
+
+.error-button{
+    margin-left: 30px;
+    cursor: pointer;
+    height: 30px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.error-button:hover,
+.search-button:hover{
+    background-color: rgba(1,1,1, 0.5);
+    color: white;
+}
+
+.error-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: red;
+    height: 100vh;
+}
